@@ -1,0 +1,39 @@
+@import "./colors";
+.body {
+  background: linear-gradient(180deg, rgba(245,72,102,1) 0%, rgba(30,68,112,1) 49%, rgba(0,0,0,1) 100%);
+}
+.container {
+  padding: 1rem 2rem;
+}
+
+.footer {
+  display: flex;
+  flex: 1;
+  padding: 2rem 0;
+  border-top: 1px solid #eaeaea;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+
+
+.title:hover,
+.title:focus,
+.title:active {
+  text-decoration: underline;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+  color: $random;
+}
+
+.title,
+.description {
+  text-align: center;
+}
+
+
