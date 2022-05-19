@@ -1,6 +1,11 @@
 @import "./colors";
 .body {
-  background: linear-gradient(180deg, rgba(245,72,102,1) 0%, rgba(30,68,112,1) 49%, rgba(0,0,0,1) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 72, 102, 1) 0%,
+    rgba(30, 68, 112, 1) 49%,
+    rgba(0, 0, 0, 1) 100%
+  );
 }
 .container {
   padding: 1rem 2rem;
@@ -13,10 +18,7 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
- 
 }
-
-
 
 .title:hover,
 .title:focus,
@@ -35,5 +37,4 @@
 .description {
   text-align: center;
 }
-
 

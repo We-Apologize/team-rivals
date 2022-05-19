@@ -1,0 +1,36 @@
+@import "./styles/colors";
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+.wrapper {
+  max-width: 100%;
+  padding: 0;
+}
+.grid {
+  padding-top: 5%;
+  width: 70%;
+  height: 100vh;
+  background-color: $registerBody;
+  clip-path: polygon(0 0, 89% 0, 82% 100%, 0% 100%);
+  position: relative;
+}
+.text {
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+  font-style: italic;
+  font-family: "Archivo Black", sans-serif;
+}
+.stack {
+  width: 100%;
+}
+.imageWrapper {
+  padding: 0;
+  margin: 0;
+  justify-self: right;
+  max-width: 100%;
+  background-size: cover;
+  position: absolute;
+  height: 100vh;
+}
+.image {
+  height: 100%;
+  width: 100%;
+}
