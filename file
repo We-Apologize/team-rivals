@@ -1,0 +1,38 @@
+    product: HP Pavilion Laptop 15-cu0xxx (4JG09PA#UUF)
+       product: 84C4
+          product: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+             product: M471A5244BB0-CRC
+          product: Xeon E3-1200 v6/7th Gen Core Processor Host Bridge/DRAM Registers
+             product: UHD Graphics 620
+             product: Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Thermal Subsystem
+             product: Sunrise Point-LP USB 3.0 xHCI Controller
+                product: xHCI Host Controller
+                   product: 2.4G Device
+                   product: HP Wide Vision HD Camera
+                product: xHCI Host Controller
+             product: Sunrise Point-LP Thermal subsystem
+             product: Sunrise Point-LP CSME HECI #1
+             product: Sunrise Point-LP SATA Controller [AHCI mode]
+             product: Sunrise Point-LP PCI Express Root Port #1
+                product: Topaz XT [Radeon R7 M260/M265 / M340/M360 / M440/M445 / 530/535 / 620/625 Mobile]
+             product: Sunrise Point-LP PCI Express Root Port #5
+                product: Dual Band Wireless-AC 3168NGW [Stone Peak]
+             product: Sunrise Point-LP PCI Express Root Port #6
+                product: RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller
+             product: Sunrise Point LPC Controller/eSPI Controller
+             product: Sunrise Point-LP PMC
+             product: Sunrise Point-LP HD Audio
+             product: Sunrise Point-LP SMBus
+          product: PnP device PNP0c02
+          product: PnP device PNP0c02
+          product: PnP device PNP0c02
+          product: PnP device PNP0c02
+          product: PnP device PNP0b00
+          product: PnP device HPQ8001
+          product: PnP device ETD073f
+          product: PnP device PNP0c02
+          product: PnP device PNP0c02
+             product: TOSHIBA HDWL110
+             product: DVDRW  DA8AESH
+       product: TF03041
+       product: OEM Define 5

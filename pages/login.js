@@ -1,5 +1,5 @@
 import styles from "../styles/Register.module.scss";
-import { Fragment } from "react";
+import Head from "next/head";
 import RegisterForm from "../components/RegisterForm/RegisterForm";
 import { Stack, Typography, Container, Grid, Button } from "@mui/material";
 import Image from "next/image";
@@ -30,6 +30,10 @@ export default function Login() {
     }
   };
   return (
+    <>
+    <Head>
+        <title>{`Login | Team Rivals`}</title>
+    </Head>
     <Container
       className={styles.wrapper}
       style={{
@@ -41,11 +45,12 @@ export default function Login() {
       <Container className={styles.imageWrapper}>
         <Stack direction='row' justifyContent='end'>
           <Image
-            src='/background.jpg'
+            src='/bg0.jpg'
             layout='fill'
             objectFit='cover'
             quality={100}
             className={styles.image}
+            alt='background image'
           />
         </Stack>
       </Container>
@@ -58,15 +63,16 @@ export default function Login() {
         <Image
           src='/team rivals.png'
           layout='intrinsic'
-          height={100}
-          width={100}
+          height={200}
+          width={200}
           alt='Team Logo'
         />
         <Typography className={styles.text} sx={{ mb: 4 }}>
-          Welcome!
+          Welcome! RIVALS Fans.
         </Typography>
         <RegisterForm buttonName='Login' onChangeSubmit={handleSubmitForm} />
       </Grid>
     </Container>
+    </>
   );
 }

@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import cookie from "cookie";
-export default function (req, res) {
+export default  function jndf (req, res) {
   if (req.method === "GET") {
     console.log(req.body);
     //cookie.parse(req.cookies.user);
