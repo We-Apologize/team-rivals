@@ -1,5 +1,5 @@
 import styles from "../styles/Register.module.scss";
-import Head from "next/head";
+import { Fragment } from "react";
 import RegisterForm from "../components/RegisterForm/RegisterForm";
 import { Stack, Typography, Container, Grid, Button } from "@mui/material";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import axios from "axios";
 import { Password } from "@mui/icons-material";
 import { useRouter } from "next/router";
 import { useAuth } from "../context/AuthProvider";
+import Head from "next/head";
 export default function Login() {
   const { logIn } = useAuth();
   const handleSubmitForm = async (enteredEmailAndPassword) => {
@@ -18,48 +19,47 @@ export default function Login() {
   };
   return (
     <>
-    <Head>
+      <Head>
         <title>{`Login | Team Rivals`}</title>
-    </Head>
-    <Container
-      className={styles.wrapper}
-      style={{
-        position: "relative",
-        display: "flex",
-        marginLeft: "0px",
-        paddingLeft: "0px",
-      }}>
-      <Container className={styles.imageWrapper}>
-        <Stack direction='row' justifyContent='end'>
+      </Head>
+      <Container
+        className={styles.wrapper}
+        style={{
+          position: "relative",
+          display: "flex",
+          marginLeft: "0px",
+          paddingLeft: "0px",
+        }}>
+        <Container className={styles.imageWrapper}>
+          <Stack direction='row' justifyContent='end'>
+            <Image
+              src='/background.jpg'
+              layout='fill'
+              objectFit='cover'
+              quality={100}
+              className={styles.image}
+            />
+          </Stack>
+        </Container>
+        <Grid
+          className={styles.grid}
+          container
+          spacing={0}
+          direction='column'
+          alignItems='center'>
           <Image
-            src='/bg0.jpg'
-            layout='fill'
-            objectFit='cover'
-            quality={100}
-            className={styles.image}
-            alt='background image'
+            src='/team rivals.png'
+            layout='intrinsic'
+            height={100}
+            width={100}
+            alt='Team Logo'
           />
-        </Stack>
+          <Typography className={styles.text} sx={{ mb: 4 }}>
+            Welcome!
+          </Typography>
+          <RegisterForm buttonName='Login' onChangeSubmit={handleSubmitForm} />
+        </Grid>
       </Container>
-      <Grid
-        className={styles.grid}
-        container
-        spacing={0}
-        direction='column'
-        alignItems='center'>
-        <Image
-          src='/team rivals.png'
-          layout='intrinsic'
-          height={200}
-          width={200}
-          alt='Team Logo'
-        />
-        <Typography className={styles.text} sx={{ mb: 4 }}>
-          Welcome! RIVALS Fans.
-        </Typography>
-        <RegisterForm buttonName='Login' onChangeSubmit={handleSubmitForm} />
-      </Grid>
-    </Container>
     </>
   );
 }

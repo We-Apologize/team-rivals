@@ -6,11 +6,10 @@
 }
 .grid {
   padding-top: 5%;
-  padding-right: 15%;
   width: 70%;
   height: 100vh;
-  background-image:$loginBgGradient;
-  clip-path: polygon(0 0, 80% 0, 70% 100%, 0% 100%);
+  background-color: $registerBody;
+  clip-path: polygon(0 0, 89% 0, 82% 100%, 0% 100%);
   position: relative;
 }
 .text {
