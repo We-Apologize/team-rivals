@@ -7,27 +7,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Password } from "@mui/icons-material";
 import { useRouter } from "next/router";
+import { useAuth } from "../context/AuthProvider";
 export default function Login() {
-  const router = useRouter();
-  const headers = {
-    "Content-Type": "application/json",
-  };
+  const { logIn } = useAuth();
   const handleSubmitForm = async (enteredEmailAndPassword) => {
     const user = {
       ...enteredEmailAndPassword,
     };
-    const result = await axios.post(
-      "/api/login",
-      user,
-      {
-        headers: headers,
-      },
-      { withCredentials: true }
-    );
-    console.log(result.status);
-    if (result.status == "200") {
-      router.push("http://localhost:3000");
-    }
+    await logIn(user);
   };
   return (
     <>
