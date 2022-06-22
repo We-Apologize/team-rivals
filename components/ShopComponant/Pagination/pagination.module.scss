@@ -1,0 +1,41 @@
+.bg {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    margin: 2%;
+}
+.paginateCtn{
+    display: flex;
+}
+.roundEffect{
+  color:#ff2600;
+  background: rgba(255,255,255,0.16);
+  cursor:pointer;
+  font-size:16px;
+  text-align:center;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:9px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin:5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+   text-decoration: none;
+}
+
+.roundEffect:hover{
+  text-decoration: none;
+  background:#DD4124;
+  color:#FFF;
+}
+.roundEffect:hover a {
+  text-decoration: none;
+  color:#FFF;
+}
+
+.active{
+  background:#DD4124;
+  color:#FFF;
+}

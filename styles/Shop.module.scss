@@ -1,0 +1,17 @@
+@import "./colors";
+.bg {
+  background-image: $shopBgGradient2;
+}
+.itemContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  margin: 2%;
+}
+.floatingCart {
+  position: sticky;
+  bottom: 3%;
+  float: right;
+  right:2%
+}

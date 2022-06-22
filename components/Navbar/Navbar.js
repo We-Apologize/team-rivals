@@ -23,22 +23,22 @@ function Navbar() {
         </Typography>
         <Stack direction='row'>
           <Button className={NavbarStyles.navItem}>Team</Button>
+
+          <Button className={NavbarStyles.navItem}>Tickets</Button>
           <Button className={NavbarStyles.navItem}>
             <Link
               underline='none'
-              className={NavbarStyles.register}
-              href='/new'>
-              New
+              className={NavbarStyles.otherItems}
+              href='/shop'>
+              Shop
             </Link>
           </Button>
-          <Button className={NavbarStyles.navItem}>Shops</Button>
-
           <Button className={NavbarStyles.navItem}>
             <Link
               underline='none'
               className={NavbarStyles.register}
               href='/login'>
-              Login
+             Login
             </Link>
           </Button>
           <Link

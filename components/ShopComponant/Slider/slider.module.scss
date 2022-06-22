@@ -1,0 +1,120 @@
+
+$heights: 70vh;
+$widths: 100%;
+
+.sliderContainer {
+  height: $heights;
+  width: $widths;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+}
+
+.active {
+  display: inline-block;
+}
+
+.inactive {
+  display: none;
+}
+
+.slides {
+  height: $heights;
+  width: $widths;
+  position: relative;
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+
+.slideTitle,
+.slideText {
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 50px;
+  position: absolute;
+  text-align: center;
+  top: 40%;
+  z-index: 10;
+}
+
+.slideText {
+  top: 65%;
+  font-size: 2rem;
+}
+
+.prev,
+.next {
+  color: transparent;
+  cursor: pointer;
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 1rem;
+  margin-top: -3rem;
+  font-size: 40px;
+  font-weight: bold;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.sliderContainer:hover .prev,.sliderContainer:hover .next {
+  color: white
+}
+
+.sliderContainer:hover .prev:hover,
+.sliderContainer:hover .next:hover {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: all 0.5s ease-in;
+}
+
+.next {
+  right: 0;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.allDots {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  top: 85%;
+  justify-content: center;
+  z-index: 200;
+}
+
+.dot {
+  cursor: pointer;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin: 0px 3px;
+  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.5); 
+  border-radius: 50%;
+  display: inline-block;
+}
+.activeDot {
+  background-color: rgba(0, 0, 0, 0.7);
+} 
+.sliderContainer:hover .dot:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+
+.sliderContainer:hover .dot{
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.sliderContainer:hover .activeDot{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.playPause {
+  color: black;
+}

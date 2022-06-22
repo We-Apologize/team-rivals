@@ -1,5 +1,5 @@
 import styles from "../styles/Register.module.scss";
-import { Fragment } from "react";
+import Head from "next/head";
 import RegisterForm from "../components/RegisterForm/RegisterForm";
 import { Stack, Typography, Container, Grid, Button } from "@mui/material";
 import Image from "next/image";
@@ -15,6 +15,10 @@ export default function Register() {
     await axios.post("/api/register", user);
   };
   return (
+    <>
+    <Head>
+        <title>{`Register | Team Rivals`}</title>
+    </Head>
     <Container
       className={styles.wrapper}
       style={{
@@ -31,6 +35,7 @@ export default function Register() {
             objectFit='cover'
             quality={100}
             className={styles.image}
+            alt='Background image'
           />
         </Stack>
       </Container>
@@ -43,8 +48,8 @@ export default function Register() {
         <Image
           src='/team rivals.png'
           layout='intrinsic'
-          height={100}
-          width={100}
+          height={200}
+          width={200}
           alt='Team Logo'
         />
         <Typography className={styles.text} sx={{ mb: 4 }}>
@@ -53,5 +58,6 @@ export default function Register() {
         <RegisterForm buttonName="Let's go" onChangeSubmit={handleSubmitForm} />
       </Grid>
     </Container>
+    </>
   );
 }

@@ -3,10 +3,7 @@
   background-color: $navbar;
   border-bottom: 6px solid ;
   border-image:  linear-gradient(to right,$gradientColor1, $gradientColor2) 30;
-  width: 100vw;
-  margin-top: -20px;
-  margin-left: -40px;
- 
+  width: 100%;
   box-shadow: none;
 }
 .navItem {
@@ -24,8 +21,14 @@
   margin:0px;
   padding-left: 35px;
   padding-right: 35px; 
-align-self: center;
+  align-self: center;
 }
 .registerButton{
   background-image: $register;
+}
+.otherItems{
+  color: antiquewhite;
+}
+.ShopIcon{
+  display:flex;
 }

@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
+
 export default function (req, res) {
+
   if (req.method === "GET") {
     console.log(req.body);
     //cookie.parse(req.cookies.user);
