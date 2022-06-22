@@ -5,17 +5,17 @@ import {
   Toolbar,
   Typography,
   Divider,
-  Link,
   Container,
   Box,
   IconButton,
 } from "@mui/material";
-import Image from "next/image";
+
+import Link from "next/link"
 import NavbarStyles from "./Navbar.module.scss";
 
 function Navbar() {
   return (
-    <AppBar position='sticky'  className={NavbarStyles.bg}>
+    <AppBar position='sticky' className={NavbarStyles.bg}>
       <Toolbar>
         <IconButton></IconButton>
         <Typography variant='h6' component='div' flexGrow='1'>
@@ -23,8 +23,16 @@ function Navbar() {
         </Typography>
         <Stack direction='row'>
           <Button className={NavbarStyles.navItem}>Team</Button>
-          <Button className={NavbarStyles.navItem}>Tickets</Button>
+          <Button className={NavbarStyles.navItem}>
+            <Link
+              underline='none'
+              className={NavbarStyles.register}
+              href='/new'>
+              New
+            </Link>
+          </Button>
           <Button className={NavbarStyles.navItem}>Shops</Button>
+
           <Button className={NavbarStyles.navItem}>
             <Link
               underline='none'
@@ -41,19 +49,6 @@ function Navbar() {
               Register
             </Button>
           </Link>
-
-          {/* <Button color='inherit'>Team</Button>
-
-          <Button color='inherit' className={NavbarStyles.navItem}>
-            Tickets
-          </Button>
-          <Button color='inherit' className={NavbarStyles.navItem}>
-            Shop
-          </Button>
-          <Button color='inherit'>Login</Button>
-          <Button variant='contained' color='success'>
-            Success
-          </Button> */}
         </Stack>
       </Toolbar>
     </AppBar>

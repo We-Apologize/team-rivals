@@ -1,9 +1,12 @@
 import "../styles/globals.css";
-import Navbar from "../components/Navbar/Navbar";
-import { Fragment } from "react";
+import { AuthProvider } from "../context/AuthProvider";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <AuthProvider>
+      <Component {...pageProps} />
+    </AuthProvider>
+  );
 }
 
 export default MyApp;
