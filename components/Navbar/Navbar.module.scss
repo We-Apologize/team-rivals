@@ -1,8 +1,8 @@
 @import "./styles/colors";
 .bg {
   background-color: $navbar;
-  border-bottom: 6px solid ;
-  border-image:  linear-gradient(to right,$gradientColor1, $gradientColor2) 30;
+  border-bottom: 6px solid;
+  border-image: linear-gradient(to right, $gradientColor1, $gradientColor2) 30;
   width: 100%;
   box-shadow: none;
 }
@@ -15,20 +15,25 @@
   padding-left: 35px;
   padding-right: 35px;
 }
+.logout {
+  padding: 21px;
+  color: antiquewhite;
+  align-self: center;
+  cursor: pointer;
+}
 
-
-.register{
-  margin:0px;
+.register {
+  margin: 0px;
   padding-left: 35px;
-  padding-right: 35px; 
+  padding-right: 35px;
   align-self: center;
 }
-.registerButton{
+.registerButton {
   background-image: $register;
 }
-.otherItems{
+.otherItems {
   color: antiquewhite;
 }
-.ShopIcon{
-  display:flex;
+.ShopIcon {
+  display: flex;
 }

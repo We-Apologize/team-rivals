@@ -19,7 +19,7 @@ const emailValidation = (email) => {
 };
 
 const passwordStrength = (password) => {
-  if (password.length < 8 || password.length > 60) return true;
+  if (password.length < 4 || password.length > 60) return true;
   return false;
 };
 module.exports = { emailValidation, passwordStrength };
