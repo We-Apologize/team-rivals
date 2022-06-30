@@ -48,9 +48,9 @@ export default function FilterItem(props) {
           Pin
         </button>
         <button
-          onClick={() => setActiveCategory("Mufler")}
+          onClick={() => setActiveCategory("Muffler")}
           className={
-            activeCategory === "Mufler" ? styles.btnActive : styles.btn
+            activeCategory === "Muffler" ? styles.btnActive : styles.btn
           }
         >
           Mulfer

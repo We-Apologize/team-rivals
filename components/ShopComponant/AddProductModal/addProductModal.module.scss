@@ -1,0 +1,31 @@
+.stock {
+  margin-bottom: 2px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.singleStock {
+  background-color: rgb(215, 215, 215);
+  margin: 2px;
+  width: 32%;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+}
+.stockDelete {
+  font-size: 1.3rem;
+  position: relative;
+  left: 5%;
+  color: #d82148;
+  cursor: "pointer" 
+}
+.productHeader{
+    display: flex;
+    justify-content: center;
+}
+.submitProduct{
+    display: flex;
+    align-content: center;
+    margin-top: 4px;
+}
