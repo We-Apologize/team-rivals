@@ -6,18 +6,20 @@ import { loginHandler } from "../../../utils/loginHandler";
 export default async (req, res) => {
   if (req.method === "GET") res.send(200);
   else if (req.method === "POST") {
-    // console.log(req.body);
     const user = await loginHandler(req);
     const matchPassword = await bcrypt.compare(
       req.body.password,
       user[0].Password
     );
+    console.log("from database");
+    const currentUser = { ...user[0] };
+    console.log(currentUser);
     if (!matchPassword) {
-      res.send(400);
+      res.send(404);
     } else {
       const token = jwt.sign(
         {
-          Email: user[0].Email,
+          Email: currentUser.Email,
         },
         process.env.SECRET,
         { expiresIn: "12h" }
@@ -32,7 +34,7 @@ export default async (req, res) => {
           sameSite: "strict",
         })
       );
-      res.send(200);
+      res.send(currentUser);
     }
   }
 };

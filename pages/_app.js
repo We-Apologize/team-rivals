@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import { AuthProvider } from "../context/AuthProvider";
 import Head from "next/head";
 function MyApp({ Component, pageProps }) {
   return (
@@ -13,8 +14,11 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />;
+       <AuthProvider>
+      <Component {...pageProps} />
+    </AuthProvider>
     </>
+
   );
 }
 

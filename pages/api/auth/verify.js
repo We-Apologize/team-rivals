@@ -1,12 +1,11 @@
 import jwt from "jsonwebtoken";
-
 export default function (req, res) {
-
-  if (req.method === "GET") {
+  if (req.method === "POST") {
     console.log(req.body);
-    //cookie.parse(req.cookies.user);
-    if (req.cookies.user == null) return "you are not";
+    if (!req.cookies.user) return res.send(401);
     const user = jwt.verify(req.cookies.user, process.env.SECRET);
-    return user.Email;
+    console.log("from verify");
+    console.log(user);
+    res.send(user);
   }
 }
