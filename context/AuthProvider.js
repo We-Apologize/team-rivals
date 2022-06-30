@@ -7,6 +7,7 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
   const router = useRouter();
   const [auth, setAuth] = useState({});
+  const [IsAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const dummy = "dummy";
   const headers = {
@@ -16,6 +17,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     setLoading(true);
     const verifyCookie = async () => {
+      console.log("yooo");
       try {
         const result = await axios.post(
           "/api/auth/verify",
@@ -25,9 +27,9 @@ export const AuthProvider = ({ children }) => {
           },
           { withCredentials: true }
         );
-        const email = result.data.Email;
-        console.log(email);
+        const email = result.data.email;
         setAuth({ user: email });
+        if (result.data.role === "admin") setIsAdmin(true);
         setLoading(false);
       } catch (e) {
         console.log(e);
@@ -49,10 +51,10 @@ export const AuthProvider = ({ children }) => {
         },
         { withCredentials: true }
       );
-      console.log("from context");
-      console.log(result);
-      const email = result.data.Email;
+
+      const email = result.data.email;
       setAuth({ user: email });
+      if (result.data.role == "admin") setIsAdmin(true);
       setLoading(false);
       router.push("/");
     } catch (e) {
@@ -61,8 +63,28 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   };
+  const logout = async()=>{
+    setLoading(true);
+    try{
+      const result = await axios.post(
+      "/api/logout"
+      )
+      setAuth({});
+      setIsAdmin(false);
+      setLoading(false);
+      router.push('/')
+    }
+    catch(e)
+    {
+    console.log(e)
+    }
+    finally{
+      setLoading(false);
+    }
+  }
   return (
-    <AuthContext.Provider value={{ auth, setAuth, dummy, logIn, loading }}>
+    <AuthContext.Provider
+      value={{ auth, setAuth, dummy, logIn, loading, IsAdmin, setIsAdmin,logout }}>
       {children}
     </AuthContext.Provider>
   );
