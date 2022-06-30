@@ -23,6 +23,8 @@ const dummyItems = [
     category: "Jersey",
     sizes: ["M", "L", "XL", "XXL"],
     id: 12,
+    price: 1500,
+    tag :"The best of the best"
   },
   {
     name: "Away Kit",
@@ -30,6 +32,9 @@ const dummyItems = [
     category: "Jersey",
     sizes: ["M", "L", "XL", "XXL"],
     id: 14,
+    price: 1500
+    ,
+    tag :"The best of the best"
   },
   {
     name: "GK Kit",
@@ -37,6 +42,9 @@ const dummyItems = [
     category: "Jersey",
     sizes: ["M", "L", "XL", "XXL"],
     id: 13,
+    price: 1500
+    ,
+    tag :"The best of the best"
   },
   {
     name: "GK Away kit",
@@ -44,6 +52,8 @@ const dummyItems = [
     category: "Jersey",
     sizes: ["M", "L", "XL", "XXL"],
     id: 17,
+    price: 1500,
+    tag :"The best of the best"
   },
   {
     name: "Shorts Home Kit",
@@ -51,6 +61,8 @@ const dummyItems = [
     category: "Shorts",
     sizes: ["M", "L", "XL", "XXL"],
     id: 19,
+    price: 1500,
+    tag :"The best of the best"
   },
   {
     name: "Shorts Away Kit",
@@ -58,6 +70,8 @@ const dummyItems = [
     category: "Shorts",
     sizes: ["M", "L", "XL", "XXL"],
     id: 89,
+    price: 1500,
+    tag :"The best of the best"
   },
   {
     name: "Mufler Red",
@@ -65,6 +79,8 @@ const dummyItems = [
     category: "Mufler",
     sizes: ["L"],
     id: 10,
+    price: 1500,
+    tag :"The best of the best"
   },
   {
     name: "Mufler Special",
@@ -72,6 +88,8 @@ const dummyItems = [
     category: "Mufler",
     sizes: ["L"],
     id: 15,
+    price: 1500,
+    tag :"The best of the best"
   },
   {
     name: "Pin",
@@ -79,6 +97,8 @@ const dummyItems = [
     category: "Pin",
     sizes: ["L"],
     id: 11,
+    price: 1500,
+    tag :"The best of the best"
   },
   {
     name: "Pin Special",
@@ -86,6 +106,8 @@ const dummyItems = [
     category: "Pin",
     sizes: ["L"],
     id: 22,
+    price: 1500,
+    tag :"The best of the best"
   },
 ];
 export { dummyItems, image };

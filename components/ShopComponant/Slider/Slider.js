@@ -12,13 +12,13 @@ function Slider(props) {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex(activeIndex === len ? 0 : activeIndex + 1);
-    }, 5000);
+    }, props.timer);
     return () => clearInterval(interval);
   }, [activeIndex,len]);
 
   return (
     <div className={styles.sliderContainer}>
-      <SliderContent activeIndex={activeIndex} sliderImage={props.sliderImage} />
+      <SliderContent activeIndex={activeIndex} sliderImage={props.sliderImage} setActiveBanner={props.setActiveBanner} />
       <Arrows
         prevSlide={() =>
           setActiveIndex(activeIndex < 1 ? len : activeIndex - 1)
