@@ -12,6 +12,9 @@ export default async (req, res) => {
       "SELECT*FROM pendingUsers WHERE userId=(?)",
       [user.userId]
     );
+    await executeQuery("DELETE FROM pendingUsers WHERE userId=(?)", [
+      user.userId
+    ]);
     await executeQuery("INSERT INTO users (email,password) VALUES(?,?)", [
       user.email,
       getPass[0].password,

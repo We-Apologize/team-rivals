@@ -23,6 +23,7 @@ import Stack from "@mui/material/Stack";
 import Link from "next/link";
 import Card from "@mui/material/Card";
 import SidebarItems from "../../components/AdminPanelComponents/SidebarItems/SidebarItems";
+import axios from "axios";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -134,7 +135,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function AdminTools() {
+export default function AdminTools(props) {
   const { IsAdmin, auth, loading } = useAuth();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -259,52 +260,79 @@ export default function AdminTools() {
           marginRight: "30px",
           borderRadius: "8px",
         }}>
-        <Stack direction='row' spacing={4}>
-          <Card
-            variant='outlined'
-            sx={{
-              width: "330px",
-              minWidth: "200px",
-              backgroundColor: "#5E35B1",
-              padding: "12px",
-              height: "170px",
-              borderRadius: "8px",
-            }}>
-            <Typography
-              sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
-              Total Users
-            </Typography>
-          </Card>
-          <Card
-            variant='outlined'
-            sx={{
-              width: "330px",
-              minWidth: "200px",
-              backgroundColor: "#D94C15",
-              padding: "12px",
-              height: "170px",
-              borderRadius: "8px",
-            }}>
-            <Typography
-              sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
-              Total pending users
-            </Typography>
-          </Card>
-          <Card
-            variant='outlined'
-            sx={{
-              width: "330px",
-              minWidth: "200px",
-              backgroundColor: "#1E88E5",
-              padding: "12px",
-              height: "170px",
-              borderRadius: "8px",
-            }}>
-            <Typography
-              sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
-              Reports
-            </Typography>
-          </Card>
+        <Stack spacing={4}>
+          <Stack direction='row' spacing={4}>
+            <Card
+              variant='outlined'
+              sx={{
+                width: "330px",
+                minWidth: "200px",
+                backgroundColor: "#5E35B1",
+                padding: "12px",
+                height: "170px",
+                borderRadius: "8px",
+              }}>
+              <Typography
+                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
+                Total Users
+              </Typography>
+              <Typography
+                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
+                {props.user}
+              </Typography>
+            </Card>
+            <Card
+              variant='outlined'
+              sx={{
+                width: "330px",
+                minWidth: "200px",
+                backgroundColor: "#D94C15",
+                padding: "12px",
+                height: "170px",
+                borderRadius: "8px",
+              }}>
+              <Typography
+                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
+                Total pending users
+              </Typography>
+              <Typography
+                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
+                {props.pendingUser}
+              </Typography>
+            </Card>
+          </Stack>
+          <Stack direction='row' spacing={4}>
+            <Card
+              variant='outlined'
+              sx={{
+                width: "330px",
+                minWidth: "200px",
+                backgroundColor: "#1E88E5",
+                padding: "12px",
+                height: "170px",
+                borderRadius: "8px",
+              }}>
+              <Typography
+                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
+                Reports
+              </Typography>
+            </Card>
+            <Card
+              variant='outlined'
+              sx={{
+                width: "330px",
+                minWidth: "200px",
+                backgroundColor: "#2E86E0",
+                padding: "12px",
+                height: "170px",
+                borderRadius: "8px",
+              }}>
+              <Typography
+                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
+                Orders
+              </Typography>
+            </Card>
+          </Stack>
         </Stack>
       </Box>
     </Box>
@@ -312,9 +340,12 @@ export default function AdminTools() {
 }
 export async function getServerSideProps(ctx) {
   const cookie = ctx.req.headers.cookie;
-  return {
-    props: {
-      user: "ok",
+  const res = await axios.get("http://localhost:3000/api/admintools", {
+    headers: {
+      cookie: cookie,
     },
+  });
+  return {
+    props: res.data,
   };
 }

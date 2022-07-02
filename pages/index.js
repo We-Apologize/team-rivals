@@ -1,10 +1,10 @@
-
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 import Navbar from "../components/Navbar/Navbar";
 import AuthContext, { useAuth } from "../context/AuthProvider";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { Typography } from "@mui/material";
 
 export default function Home(props) {
   const { auth, loading } = useAuth();
@@ -24,15 +24,17 @@ export default function Home(props) {
     <div className={styles.container}>
       <Navbar />
 
-      <h1 className={styles.title}>Hello From {auth.user}</h1>
-
+      {auth.user && (
+        <Typography className={styles.title} sx={{ margin: "40px" }}>
+          Hi, {auth.user}
+        </Typography>
+      )}
 
       <Image
-        className={styles.logo}
         src='/team rivals.png'
         layout='intrinsic'
-        height={500}
-        width={500}
+        width={700}
+        height={700}
         alt='Team Logo'
       />
       <footer className={styles.footer}>

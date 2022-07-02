@@ -7,8 +7,7 @@
     rgba(0, 0, 0, 1) 100%
   );
 }
-.container {
-}
+
 
 .footer {
   display: flex;
@@ -28,7 +27,7 @@
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 2rem;
   color: $random;
 }
 
@@ -36,4 +35,6 @@
 .description {
   text-align: center;
 }
-
+.logo{
+  margin: 50px;
+}
