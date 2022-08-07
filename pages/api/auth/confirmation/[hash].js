@@ -13,15 +13,18 @@ export default async (req, res) => {
       [user.userId]
     );
     await executeQuery("DELETE FROM pendingUsers WHERE userId=(?)", [
-      user.userId
+      user.userId,
     ]);
-    await executeQuery("INSERT INTO users (email,password) VALUES(?,?)", [
-      user.email,
-      getPass[0].password,
-    ]);
+    const userId = Date.now();
+    await executeQuery(
+      "INSERT INTO users (userId, email,password) VALUES(?,?,?)",
+      [userId, user.email, getPass[0].password]
+    );
     const currentUser = {
+      id: userId,
       email: user.email,
-      role: null,
+      role: "user",
+      description: "",
     };
     settCookie(req, res, currentUser);
     res.redirect("/");

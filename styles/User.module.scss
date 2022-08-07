@@ -1,0 +1,12 @@
+@import "./colors";
+.bg {
+  height: 100vh;
+  background-color: $registerBody;
+}
+.text {
+  color: #FDC52F;
+  font-size: 40px;
+  font-style: italic;
+  font-family: "Archivo Black", sans-serif;
+  font-weight: bolder;
+}

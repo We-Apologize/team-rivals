@@ -28,7 +28,9 @@ export const AuthProvider = ({ children }) => {
           { withCredentials: true }
         );
         const email = result.data.email;
-        setAuth({ user: email });
+        const id = result.data.id;
+        console.log(result.data)
+        setAuth({ user: email, id: id, isLoggedIn: true });
         if (result.data.role === "admin") setIsAdmin(true);
         setLoading(false);
       } catch (e) {
@@ -53,7 +55,9 @@ export const AuthProvider = ({ children }) => {
       );
 
       const email = result.data.email;
-      setAuth({ user: email });
+      const id = result.data.id;
+      console.log(result.data);
+      setAuth({ id: id, user: email, isLoggedIn: true });
       if (result.data.role == "admin") setIsAdmin(true);
       setLoading(false);
       router.push("/");
@@ -63,28 +67,32 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   };
-  const logout = async()=>{
+  const logout = async () => {
     setLoading(true);
-    try{
-      const result = await axios.post(
-      "/api/logout"
-      )
+    try {
+      const result = await axios.post("/api/logout");
       setAuth({});
       setIsAdmin(false);
       setLoading(false);
-      router.push('/')
-    }
-    catch(e)
-    {
-    console.log(e)
-    }
-    finally{
+      router.push("/");
+    } catch (e) {
+      console.log(e);
+    } finally {
       setLoading(false);
     }
-  }
+  };
   return (
     <AuthContext.Provider
-      value={{ auth, setAuth, dummy, logIn, loading, IsAdmin, setIsAdmin,logout }}>
+      value={{
+        auth,
+        setAuth,
+        dummy,
+        logIn,
+        loading,
+        IsAdmin,
+        setIsAdmin,
+        logout,
+      }}>
       {children}
     </AuthContext.Provider>
   );
