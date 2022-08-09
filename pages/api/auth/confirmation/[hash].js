@@ -17,8 +17,8 @@ export default async (req, res) => {
     ]);
     const userId = Date.now();
     await executeQuery(
-      "INSERT INTO users (userId, email,password) VALUES(?,?,?)",
-      [userId, user.email, getPass[0].password]
+      "INSERT INTO users (userId,name, email,password,role,description) VALUES(?,?,?)",
+      [userId, "", user.email, getPass[0].password, "user", ""]
     );
     const currentUser = {
       id: userId,
