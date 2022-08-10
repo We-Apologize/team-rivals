@@ -1,0 +1,31 @@
+@import "./colors";
+.bg {
+  background-color: $registerBody;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+.Card {
+  background: linear-gradient(#181733 0 0) padding-box,
+    /*this is your grey background*/
+      linear-gradient(to right, $gradientColor1, $gradientColor2) border-box;
+
+  color: #ffffff;
+  border: 5px solid transparent;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 75px 0;
+}
+.CardContent {
+  background: linear-gradient(#181733f3 0 0) padding-box, url("/user.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.text {
+  color: #fdc52f;
+  font-size: 40px;
+  font-style: italic;
+  font-family: "Archivo Black", sans-serif;
+  font-weight: bolder;
+}

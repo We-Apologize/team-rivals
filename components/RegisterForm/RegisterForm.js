@@ -75,7 +75,7 @@ function DarkTextField(props) {
           sx={{ mt: 1, mb: 4 }}
           inputProps={{ style: inputStyle }}
           className={styles.style}
-          type='text'
+          type='email'
           onChange={handleEmailChange}
           error={emailError}
         />

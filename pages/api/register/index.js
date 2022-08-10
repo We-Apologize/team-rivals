@@ -1,6 +1,7 @@
 import { executeQuery } from "../../../lib/db";
 import { registrationHandler } from "../../../utils/registrationHandler";
 import { confirmMail } from "../../../utils/confirmMail";
+import { TrainOutlined } from "@mui/icons-material";
 export default async (req, res) => {
   if (req.method === "GET") res.send(200);
   else if (req.method === "POST") {
@@ -11,7 +12,7 @@ export default async (req, res) => {
     );
     console.log(user);
     if (user.length != 0) {
-      res.json({ msg: "user already exists" });
+      res.json({ msg: "user already exists",err:true });
       return res.end();
     }
     const token = await registrationHandler(req);
@@ -21,6 +22,8 @@ export default async (req, res) => {
     };
     const result = await confirmMail(confirmUser);
     console.log(result);
-    return res.status(201).json(result);
+    return res
+      .status(201)
+      .json({ msg: "One more step! Please check your email to activate account!",err: false });
   }
 };

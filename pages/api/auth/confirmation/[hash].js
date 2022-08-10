@@ -12,13 +12,19 @@ export default async (req, res) => {
       "SELECT*FROM pendingUsers WHERE userId=(?)",
       [user.userId]
     );
-    await executeQuery("INSERT INTO users (email,password) VALUES(?,?)", [
-      user.email,
-      getPass[0].password,
+    await executeQuery("DELETE FROM pendingUsers WHERE userId=(?)", [
+      user.userId,
     ]);
+    const userId = Date.now();
+    await executeQuery(
+      "INSERT INTO users (userId,name, email,password,role,description) VALUES(?,?,?)",
+      [userId, "", user.email, getPass[0].password, "user", ""]
+    );
     const currentUser = {
+      id: userId,
       email: user.email,
-      role: null,
+      role: "user",
+      description: "",
     };
     settCookie(req, res, currentUser);
     res.redirect("/");
