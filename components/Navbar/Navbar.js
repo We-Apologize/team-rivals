@@ -1,4 +1,3 @@
-
 import {
   AppBar,
   Button,
@@ -26,7 +25,7 @@ import router from "next/router";
 import { useAuth } from "../../context/AuthProvider";
 import NavbarStyles from "./Navbar.module.scss";
 function Navbar() {
-  const { auth, IsAdmin, logout } = useAuth();
+  const { auth, IsAdmin, logout, IsEditor } = useAuth();
   const user = auth.user;
   const id = auth.id;
   const [anchorEl, setAnchorEl] = useState(null);
@@ -64,8 +63,19 @@ function Navbar() {
               </Link>
             </Button>
           )}
+          {IsEditor && (
+            <Button className={NavbarStyles.navItem}>
+              <Link underline='none' href='/editorspanel'>
+                Editor
+              </Link>
+            </Button>
+          )}
+          <Button className={NavbarStyles.navItem}>
+            <Link underline='none' href='/news'>
+              news
+            </Link>
+          </Button>
           <Button className={NavbarStyles.navItem}>Team</Button>
-
           <Button className={NavbarStyles.navItem}>Tickets</Button>
           <Button className={NavbarStyles.navItem}>
             <Link
@@ -75,6 +85,7 @@ function Navbar() {
               Shop
             </Link>
           </Button>
+
           {!user && (
             <>
               <Button className={NavbarStyles.navItem}>

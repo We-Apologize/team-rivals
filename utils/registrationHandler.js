@@ -21,7 +21,7 @@ const registrationHandler = async (req) => {
       email: req.body.email,
     },
     process.env.EMAIL_SECRET,
-    { expiresIn: "6h" }
+    { expiresIn: "24h" }
   );
   return token;
 };

@@ -1,0 +1,5 @@
+@import "./colors";
+.appbar {
+  background: linear-gradient(to right, $gradientColor1, $gradientColor2)
+    border-box;
+}

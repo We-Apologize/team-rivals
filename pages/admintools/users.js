@@ -271,11 +271,12 @@ export default function AdminTools(props) {
         <Typography sx={{ margin: "8px" }}>All pending users</Typography>
         <Button
           variant='contained'
+          type='submit'
           onClick={ClickHandler}
           sx={{ margin: "8px" }}>
           Delete all expired users
         </Button>
-        <div style={{ height: 400, width: "100%",backgroundColor:"white" }}>
+        <div style={{ height: 400, width: "100%", backgroundColor: "white" }}>
           <DataGrid
             rows={rows}
             columns={columns}

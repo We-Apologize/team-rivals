@@ -28,9 +28,9 @@ export default async (req, res) => {
     const currentUser = jwt.verify(req.cookies.user, process.env.SECRET);
     if (currentUser.id == id) {
      
-        if(req.body.isPasswordUpdate == true){
+        // if(req.body.isPasswordUpdate == true){
             
-        }
+        // }
       await executeQuery(
         "UPDATE users SET name=(?),email=(?),description=(?) WHERE userId=(?)",
         [req.body.name, req.body.email, req.body.description, currentUser.id]

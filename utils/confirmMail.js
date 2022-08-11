@@ -35,7 +35,7 @@ function confirmMail(toUser) {
     subject: "TeamRivals - Activate Account",
     text: "Hello",
     html: `
-      <p>Please activate your account by clicking the link bellow, the link will expire in 6h </p>
+      <p>Please activate your account by clicking the link bellow, the link will expire in 24hours </p>
       <a href='${process.env.DOMAIN}/api/auth/confirmation/${toUser.token}'>Activate Account </a>
     `,
   };
