@@ -1,24 +1,15 @@
 import Image from "next/image";
-import styles from "../styles/Home.module.scss";
+import LoadingScreen from "../components/LoadingScreen";
 import Navbar from "../components/Navbar/Navbar";
 import AuthContext, { useAuth } from "../context/AuthProvider";
-import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
-
+import styles from "../styles/Home.module.scss";
 export default function Home(props) {
   const { auth, loading } = useAuth();
   if (loading)
     return (
-      <Box
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          transform: "translate(-50%, -50%)",
-        }}>
-        <CircularProgress sx={{ margin: "auto" }} />
-      </Box>
+      <LoadingScreen/>
     );
   return (
     <div className={styles.container}>

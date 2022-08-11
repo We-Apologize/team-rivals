@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter();
   const [auth, setAuth] = useState({});
   const [IsAdmin, setIsAdmin] = useState(false);
+  const [IsEditor, setIsEditor] = useState(false);
   const [loading, setLoading] = useState(true);
   const dummy = "dummy";
   const headers = {
@@ -32,6 +33,7 @@ export const AuthProvider = ({ children }) => {
         console.log(result.data)
         setAuth({ user: email, id: id, isLoggedIn: true });
         if (result.data.role === "admin") setIsAdmin(true);
+        else if(result.data.role === "editor") setIsEditor(true);
         setLoading(false);
       } catch (e) {
         console.log(e);
@@ -59,6 +61,7 @@ export const AuthProvider = ({ children }) => {
       console.log(result.data);
       setAuth({ id: id, user: email, isLoggedIn: true });
       if (result.data.role == "admin") setIsAdmin(true);
+      else if (result.data.role === "editor") setIsEditor(true);
       setLoading(false);
       router.push("/");
     } catch (e) {
@@ -91,6 +94,8 @@ export const AuthProvider = ({ children }) => {
         loading,
         IsAdmin,
         setIsAdmin,
+        IsEditor,
+        setIsEditor,
         logout,
       }}>
       {children}
