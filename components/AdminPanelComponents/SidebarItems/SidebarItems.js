@@ -22,6 +22,8 @@ const Icon = {
   "Go Back": <Back />,
 };
 function link(component) {
+  if(component.toLowerCase()=="shop")
+  return "/shop/additem";
   if (component == "Go Back") return "/";
   return component == "Dashboard"
     ? "/admintools"

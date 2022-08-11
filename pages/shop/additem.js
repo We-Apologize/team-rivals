@@ -11,6 +11,7 @@ import AddProductModal from "../../components/ShopComponant/AddProductModal/AddP
 import { motion, AnimatePresence } from "framer-motion";
 import ProductCard from "../../components/ShopComponant/ProductCard/ProductCard";
 import styles from "../../styles/Shop.module.scss";
+import { useAuth } from "../../context/AuthProvider";
 export default function Shop() {
   const [imgModalOpen, setImgModalOpen] = useState(false);
   const [addProductOpen, setAddProductOpen] = useState(false);
@@ -19,6 +20,7 @@ export default function Shop() {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
+  const { auth,IsAdmin } = useAuth();
   useEffect(() => {
     const getAllBanners = async () => {
       const res = await axios.get(
@@ -74,12 +76,13 @@ export default function Shop() {
       return;
     }
   };
-
+  {if(!IsAdmin) return <h1>page not found</h1>}
   return (
     <>
       <Head>
         <title>{`Add Items | Team Rivals`}</title>
       </Head>
+      
       <div className={styles.bg}>
         <Navbar />
         <Stack>

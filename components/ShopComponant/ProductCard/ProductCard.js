@@ -15,6 +15,7 @@ export default function ProductCard(props) {
       if (index === -1) return [...preItems,item];
       else return [...preItems];
     });
+    // localStorage.setItem("cartItem", JSON.stringify(cartItem));
   }
   return (
     <motion.div

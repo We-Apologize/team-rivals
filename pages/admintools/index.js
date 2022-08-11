@@ -155,7 +155,8 @@ export default function AdminTools(props) {
           left: "50%",
           top: "50%",
           transform: "translate(-50%, -50%)",
-        }}>
+        }}
+      >
         <CircularProgress sx={{ margin: "auto" }} />
       </Box>
     );
@@ -165,33 +166,36 @@ export default function AdminTools(props) {
       <CssBaseline />
       <div sx={{ padding: "20px" }}>
         <AppBar
-          position='fixed'
+          position="fixed"
           open={open}
           sx={{
             backgroundColor: "white",
             marginLeft: "20px",
-          }}>
+          }}
+        >
           <Toolbar sx={{ justifyContent: "space-between" }}>
-            <Stack direction='row'>
+            <Stack direction="row">
               <IconButton
-                aria-label='open drawer'
+                aria-label="open drawer"
                 onClick={handleDrawerOpen}
-                edge='start'
+                edge="start"
                 sx={{
                   marginRight: 5,
                   ...(open && { display: "none" }),
-                }}>
+                }}
+              >
                 <MenuIcon />
               </IconButton>
               <Typography
-                variant='h6'
+                variant="h6"
                 noWrap
-                component='div'
+                component="div"
                 sx={{
                   color: "black",
                   fontFamily: "comfortaa",
                   fontWeight: "bold",
-                }}>
+                }}
+              >
                 AdminTools
               </Typography>
             </Stack>
@@ -200,25 +204,26 @@ export default function AdminTools(props) {
                 <SearchIcon sx={{ color: "#5E35B1" }} />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder='Search…'
+                placeholder="Search…"
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
-            <Stack direction='row' spacing={2}>
-              <Avatar alt='Remy Sharp' src='' />
+            <Stack direction="row" spacing={2}>
+              <Avatar alt="Remy Sharp" src="" />
             </Stack>
           </Toolbar>
         </AppBar>
       </div>
       <Drawer
-        variant='permanent'
+        variant="permanent"
         open={open}
         PaperProps={{
           sx: {
             backgroundColor: "#0A0927",
             color: "white",
           },
-        }}>
+        }}
+      >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -249,7 +254,7 @@ export default function AdminTools(props) {
         </List>
       </Drawer>
       <Box
-        component='main'
+        component="main"
         sx={{
           flexGrow: 1,
           p: 3,
@@ -259,11 +264,12 @@ export default function AdminTools(props) {
           marginLeft: "30px",
           marginRight: "30px",
           borderRadius: "8px",
-        }}>
+        }}
+      >
         <Stack spacing={4}>
-          <Stack direction='row' spacing={4}>
+          <Stack direction="row" spacing={4}>
             <Card
-              variant='outlined'
+              variant="outlined"
               sx={{
                 width: "330px",
                 minWidth: "200px",
@@ -271,18 +277,21 @@ export default function AdminTools(props) {
                 padding: "12px",
                 height: "170px",
                 borderRadius: "8px",
-              }}>
+              }}
+            >
               <Typography
-                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
+                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}
+              >
                 Total Users
               </Typography>
               <Typography
-                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
+                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}
+              >
                 {props.user}
               </Typography>
             </Card>
             <Card
-              variant='outlined'
+              variant="outlined"
               sx={{
                 width: "330px",
                 minWidth: "200px",
@@ -290,20 +299,23 @@ export default function AdminTools(props) {
                 padding: "12px",
                 height: "170px",
                 borderRadius: "8px",
-              }}>
+              }}
+            >
               <Typography
-                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
+                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}
+              >
                 Total pending users
               </Typography>
               <Typography
-                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
+                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}
+              >
                 {props.pendingUser}
               </Typography>
             </Card>
           </Stack>
-          <Stack direction='row' spacing={4}>
+          <Stack direction="row" spacing={4}>
             <Card
-              variant='outlined'
+              variant="outlined"
               sx={{
                 width: "330px",
                 minWidth: "200px",
@@ -311,14 +323,16 @@ export default function AdminTools(props) {
                 padding: "12px",
                 height: "170px",
                 borderRadius: "8px",
-              }}>
+              }}
+            >
               <Typography
-                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
+                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}
+              >
                 Reports
               </Typography>
             </Card>
             <Card
-              variant='outlined'
+              variant="outlined"
               sx={{
                 width: "330px",
                 minWidth: "200px",
@@ -326,9 +340,11 @@ export default function AdminTools(props) {
                 padding: "12px",
                 height: "170px",
                 borderRadius: "8px",
-              }}>
+              }}
+            >
               <Typography
-                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}>
+                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}
+              >
                 Orders
               </Typography>
             </Card>
