@@ -38,3 +38,11 @@
 .logo{
   margin: 50px;
 }
+.title {
+  font-size: 30px;
+  background: linear-gradient(to right, #eaf606, #c96812);
+  font-weight: bold;
+  text-align:'center';
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}

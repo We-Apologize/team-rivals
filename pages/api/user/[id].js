@@ -28,9 +28,23 @@ export default async (req, res) => {
     const currentUser = jwt.verify(req.cookies.user, process.env.SECRET);
     if (currentUser.id == id) {
      
-        // if(req.body.isPasswordUpdate == true){
-            
-        // }
+        if(req.body.isPasswordUpdate == true){
+           const hashedPassword = await bcrypt.hash(req.body.newPassword, 10);
+           console.log(hashedPassword);
+            await executeQuery(
+              
+              "UPDATE users SET name=(?),email=(?),description=(?),password=(?) WHERE userId=(?)",
+              [
+                req.body.name,
+                req.body.email,
+                req.body.description,
+                hashedPassword,
+                currentUser.id,
+              ]
+            );
+            return res.send(200);
+        }
+
       await executeQuery(
         "UPDATE users SET name=(?),email=(?),description=(?) WHERE userId=(?)",
         [req.body.name, req.body.email, req.body.description, currentUser.id]

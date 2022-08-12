@@ -1,6 +1,8 @@
 import { Typography } from "@mui/material";
 import { TextField, Button, Box, Card } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import CardMedia from "@mui/material/CardMedia";
 import { useAuth } from "../../context/AuthProvider";
 import LoadingScreen from "../../components/LoadingScreen";
 import Navbar from "../../components/Navbar/Navbar";
@@ -14,7 +16,7 @@ import Link from "next/link";
 import axios from "axios";
 import styles from "../../styles/News.module.scss";
 
-export default function (props) {
+export default function () {
   const { auth, loading } = useAuth();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -22,6 +24,7 @@ export default function (props) {
   const [time, setTime] = useState("");
   const [comment, setComment] = useState("");
   const [loading2, setLoading2] = useState(true);
+  const [comments, setComments] = useState([]);
   const router = useRouter();
   const { id } = router.query;
   const CommentChange = (e) => {
@@ -29,7 +32,10 @@ export default function (props) {
     setComment(e.target.value);
   };
   const submitHandler = async (e) => {
-    e.preventDefault();
+    if(!auth.id) {
+      alert('please login first')
+      return;
+    }
     let author = "unknown";
     console.log(auth.name);
     console.log("comment", comment);
@@ -62,6 +68,7 @@ export default function (props) {
         const date = new Date(res.data.publishedAt);
         setTime(date.toString());
         setAuthor(res.data.authorName);
+        setComments(res.data.comments);
         setLoading2(false);
       }
     }
@@ -122,6 +129,37 @@ export default function (props) {
               post comment
             </Button>
           </form>
+          {comments.map((comment, i) => (
+            //<ObjectRow obj={object} key={i} />
+            <Card
+              sx={{
+                margin: "20px",
+                boxShadow: "2px",
+                cursor: "pointer",
+              }}>
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  sx={{ fontSize: "14px", fontWeight: "bold" }}>
+                  {comment.author}
+                </Typography>
+                <Typography gutterBottom>{comment.comment}</Typography>
+                <Typography
+                  gutterBottom
+                  sx={{
+                    fontSize: "12px",
+                    fontWeight: "bold",
+                    color: "#3A3B3C",
+                  }}>
+                  {format(comment.commentId)}
+                </Typography>
+                {/* <Typography variant='body2' color='text.secondary'>
+              Lizards are a widespread group of squamate reptiles, with over
+              6,000 species, ranging across all continents except Antarctica
+            </Typography> */}
+              </CardContent>
+            </Card>
+          ))}
         </Stack>
       </Box>
     </>

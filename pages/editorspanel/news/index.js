@@ -14,16 +14,18 @@ export default function news() {
   const { auth, loading, IsEditor } = useAuth();
   const [value, onChange] = useState("");
   const [title, setTitle] = useState("");
-  const [newsId,setNewsId] = useState("")
+  const [newsId, setNewsId] = useState("");
+  const [url, setUrl] = useState("");
   const headers = {
     "Content-Type": "application/json",
   };
   const handleImageUpload = useCallback((file) => {
     return new Promise((resolve, reject) => {
       try {
-        const imageRef = ref(storage, `/news/${newsId}/${file.name}`);
+        const imageRef = ref(storage, `/news/${file.name}`);
         uploadBytes(imageRef, file).then((snapshot) => {
           getDownloadURL(snapshot.ref).then(async (url) => {
+            setUrl(url);
             resolve(url);
           });
         });
@@ -46,6 +48,7 @@ export default function news() {
       description: value,
       author: auth.id,
       authorName: authorName,
+      url: url,
       time: new Date(Date.now()),
     };
     const res = await axios.post("/api/news", body);

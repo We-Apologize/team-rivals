@@ -15,13 +15,16 @@ export default async (req, res) => {
     await executeQuery("DELETE FROM pendingUsers WHERE userId=(?)", [
       user.userId,
     ]);
-    const userId = Date.now();
     await executeQuery(
-      "INSERT INTO users (userId,name, email,password,role,description) VALUES(?,?,?)",
-      [userId, "", user.email, getPass[0].password, "user", ""]
+      "INSERT INTO users (name, email,password,role,description) VALUES(?,?,?,?,?)",
+      ["", user.email, getPass[0].password, "user", ""]
+    );
+    const userId = await executeQuery(
+      "SELECT userId From users WHERE email=(?)",
+      [user.email]
     );
     const currentUser = {
-      id: userId,
+      id: userId[0].userId,
       email: user.email,
       role: "user",
       description: "",
