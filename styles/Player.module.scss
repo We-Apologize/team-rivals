@@ -1,0 +1,17 @@
+@import "./colors";
+
+.itemContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  margin: 2%;
+}
+.title {
+  font-size: 50px;
+  background: linear-gradient(to right, $gradientColor2, $gradientColor1);
+  font-weight: bold;
+  text-align:'center';
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}

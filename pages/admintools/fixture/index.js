@@ -1,6 +1,6 @@
 import CircularProgress from "@mui/material/CircularProgress";
-import { useAuth } from "../../context/AuthProvider";
-import { authorizationHandler } from "../../utils/authorizationHandler";
+import { useAuth } from "../../../context/AuthProvider";
+import { authorizationHandler } from "../../../utils/authorizationHandler";
 import { useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -22,10 +22,10 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import Link from "next/link";
 import Card from "@mui/material/Card";
-import SidebarItems from "../../components/AdminPanelComponents/SidebarItems/SidebarItems";
+import SidebarItems from "../../../components/AdminPanelComponents/SidebarItems/SidebarItems";
 import axios from "axios";
-import Button from '@mui/material/Button'
-import ScheduleMatch from "../../components/Fixture/ScheduleMatch";
+import Button from "@mui/material/Button";
+import ScheduleMatch from "../../../components/Fixture/ScheduleMatch";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -157,8 +157,7 @@ export default function AdminTools(props) {
           left: "50%",
           top: "50%",
           transform: "translate(-50%, -50%)",
-        }}
-      >
+        }}>
         <CircularProgress sx={{ margin: "auto" }} />
       </Box>
     );
@@ -168,36 +167,33 @@ export default function AdminTools(props) {
       <CssBaseline />
       <div sx={{ padding: "20px" }}>
         <AppBar
-          position="fixed"
+          position='fixed'
           open={open}
           sx={{
             backgroundColor: "white",
             marginLeft: "20px",
-          }}
-        >
+          }}>
           <Toolbar sx={{ justifyContent: "space-between" }}>
-            <Stack direction="row">
+            <Stack direction='row'>
               <IconButton
-                aria-label="open drawer"
+                aria-label='open drawer'
                 onClick={handleDrawerOpen}
-                edge="start"
+                edge='start'
                 sx={{
                   marginRight: 5,
                   ...(open && { display: "none" }),
-                }}
-              >
+                }}>
                 <MenuIcon />
               </IconButton>
               <Typography
-                variant="h6"
+                variant='h6'
                 noWrap
-                component="div"
+                component='div'
                 sx={{
                   color: "black",
                   fontFamily: "comfortaa",
                   fontWeight: "bold",
-                }}
-              >
+                }}>
                 AdminTools
               </Typography>
             </Stack>
@@ -206,26 +202,25 @@ export default function AdminTools(props) {
                 <SearchIcon sx={{ color: "#5E35B1" }} />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder="Search…"
+                placeholder='Search…'
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
-            <Stack direction="row" spacing={2}>
-              <Avatar alt="Remy Sharp" src="" />
+            <Stack direction='row' spacing={2}>
+              <Avatar alt='Remy Sharp' src='' />
             </Stack>
           </Toolbar>
         </AppBar>
       </div>
       <Drawer
-        variant="permanent"
+        variant='permanent'
         open={open}
         PaperProps={{
           sx: {
             backgroundColor: "#0A0927",
             color: "white",
           },
-        }}
-      >
+        }}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -257,7 +252,7 @@ export default function AdminTools(props) {
         </List>
       </Drawer>
       <Box
-        component="main"
+        component='main'
         sx={{
           flexGrow: 1,
           p: 3,
@@ -267,13 +262,14 @@ export default function AdminTools(props) {
           marginLeft: "30px",
           marginRight: "30px",
           borderRadius: "8px",
-        }}
-      >
+        }}>
         <Stack spacing={4}>
-          <Stack direction="row" spacing={4}>
-            <Button variant="contained">Schedule A Match</Button>
-            <Button variant="contained">Scheduled Matches</Button>
-            <Button variant="contained">Results</Button>
+          <Stack direction='row' spacing={4}>
+            <Button variant='contained'>Schedule A Match</Button>
+            <Button variant='contained'>Scheduled Matches</Button>
+            <Link href='/admintools/fixture/addResult'>
+              <Button variant='contained'>Results</Button>
+            </Link>
           </Stack>
           <ScheduleMatch />
         </Stack>
