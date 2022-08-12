@@ -3,7 +3,8 @@ import cookie from "cookie";
 const settCookie = async (req, res, currentUser) => {
   const token = jwt.sign(
     {
-      id:currentUser.id,
+      id: currentUser.id,
+      name: currentUser.name,
       email: currentUser.email,
       role: currentUser.role,
     },

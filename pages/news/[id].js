@@ -13,18 +13,34 @@ import { format, render, cancel, register } from "timeago.js";
 import Link from "next/link";
 import axios from "axios";
 import styles from "../../styles/News.module.scss";
+
 export default function (props) {
-  // const { auth, loading } = useAuth();
+  const { auth, loading } = useAuth();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [author, setAuthor] = useState("");
   const [time, setTime] = useState("");
-  const [comment, setcomment] = useState("");
+  const [comment, setComment] = useState("");
   const [loading2, setLoading2] = useState(true);
   const router = useRouter();
   const { id } = router.query;
-  const submitHandler = async () => {
-    await axios.post(`/api/news/${id}/comment`);
+  const CommentChange = (e) => {
+    console.log(e.target.value);
+    setComment(e.target.value);
+  };
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    let author = "unknown";
+    console.log(auth.name);
+    console.log("comment", comment);
+    if (auth.name) author = auth.name;
+    const newComment = {
+      commentId: Date.now(),
+      comment: comment,
+      newsId: id,
+      authorName: author,
+    };
+    await axios.post(`/api/news/${id}/comment`, newComment);
   };
   console.log(id);
   useEffect(() => {
@@ -51,7 +67,7 @@ export default function (props) {
     }
     if (id) getNews();
   }, [id]);
-  if (loading2) return <LoadingScreen />;
+  if (loading2 || loading) return <LoadingScreen />;
   return (
     <>
       <Navbar />
@@ -96,7 +112,7 @@ export default function (props) {
             <TextField
               placeholder='Add a comment'
               sx={{ width: "900px" }}
-              onChange={(e) => setcomment(e.target.value)}
+              onChange={CommentChange}
             />
             <br />
             <Button

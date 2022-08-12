@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
         const email = result.data.email;
         const name = result.data.name;
         const id = result.data.id;
-        console.log(result.data);
+        console.log("from context", result.data);
         setAuth({ user: email, name: name, id: id, isLoggedIn: true });
         if (result.data.role === "admin") setIsAdmin(true);
         else if (result.data.role === "editor") setIsEditor(true);
