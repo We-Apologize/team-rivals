@@ -11,6 +11,8 @@ import {
 import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Navbar from "../../../../components/Navbar/Navbar";
+import styles from "../../../../styles/Home.module.scss"
 export default function addResult() {
   const [events, setEvents] = useState("Select Event");
   const [allEvent,setAllEvent] = useState([]);
@@ -80,14 +82,19 @@ export default function addResult() {
   };
   return (
     <>
-      <div style={{ margin: "auto" }}>
-        <h1>Add results of match</h1>
+    <Navbar/>
+      <div style={{ margin: "auto" }} className={styles.bgOfAdresult}>
+        <h1 style={{display:"flex",justifyContent:"center"}}>Add results of match</h1>
         <form>
           <Stack
             direction='column'
+            justifyContent="center"
+            alignSelf="center"
             spacing={4}
-            sx={{ width: "30%", margin: "100px" }}>
-            <TextField label='Time' onChange={(e)=>{setTime(e.target.value)}} />
+            sx={{ width: "30%", margin: "100px"}}>
+               <h3 style={{display:"flex",justifyContent:"center"}}>Add Timestamp of the match event</h3>
+            <TextField label='Time' onChange={(e)=>{setTime(e.target.value)}}/>
+            <h3 style={{display:"flex",justifyContent:"center"}}>Select Event Type</h3>
             <FormControl>
               <InputLabel id='demo-simple-select-label'>
                 Select Event
@@ -193,7 +200,7 @@ export default function addResult() {
               <></>
             )}
 
-            <Button variant='contained' onClick={addEvents}>
+            <Button variant='contained' sx={{bgcolor:"#0A0927"}} onClick={addEvents}>
               Add Events
             </Button>
             {allEvent.map((ev,i)=>{
@@ -201,7 +208,7 @@ export default function addResult() {
               <p>{JSON.stringify(ev)}</p></div>
                
             })}
-            <Button variant='contained' onClick={saveMatchDetails}>
+            <Button variant='contained' sx={{bgcolor:"#0A0927"}} onClick={saveMatchDetails}>
               Save
             </Button>
           </Stack>
