@@ -1,5 +1,5 @@
 create table player (
-	p_id INT,
+	p_id INT PRIMARY KEY,
 	teamName VARCHAR(30),
 	name VARCHAR(50),
 	dob DATE,
