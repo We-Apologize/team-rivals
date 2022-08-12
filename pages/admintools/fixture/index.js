@@ -22,6 +22,9 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import Link from "next/link";
 import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
 import SidebarItems from "../../../components/AdminPanelComponents/SidebarItems/SidebarItems";
 import axios from "axios";
 import Button from "@mui/material/Button";
@@ -137,8 +140,15 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function AdminTools(props) {
+export default function Fixture(props) {
   const { IsAdmin, auth, loading } = useAuth();
+  const [result, setResult] = useState(false);
+  const scheduleMatch = () => {
+    setResult(false);
+  };
+  const showPastEvent = () => {
+    setResult(true);
+  };
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -265,13 +275,54 @@ export default function AdminTools(props) {
         }}>
         <Stack spacing={4}>
           <Stack direction='row' spacing={4}>
-            <Button variant='contained'>Schedule A Match</Button>
-            <Button variant='contained'>Scheduled Matches</Button>
-            <Link href='/admintools/fixture/addResult'>
-              <Button variant='contained'>Results</Button>
-            </Link>
+            <Button
+              variant='contained'
+              onClick={scheduleMatch}
+              sx={{ height: "50px" }}>
+              Schedule A Match
+            </Button>
+            <Button
+              variant='contained'
+              onClick={showPastEvent}
+              sx={{ height: "50px" }}>
+              Results
+            </Button>
+
+            {result != true && <ScheduleMatch />}
+            {result == true && (
+              <>
+                <Stack>
+                  <Typography>Past events</Typography>
+                  {props.data.map((match, i) => (
+                    //<ObjectRow obj={object} key={i} />
+                    <Link
+                      href={`/admintools/fixture/${match.m_id}/addResult`}
+                      sx={{ cursor: "pointer" }}>
+                      <Card
+                        sx={{
+                          margin: "20px",
+                          boxShadow: "2px",
+                          cursor: "pointer",
+                        }}>
+                        <CardContent>
+                          <Typography gutterBottom variant='h5' component='div'>
+                            {"TeamRivals vs " + match.opponant}
+                          </Typography>
+                          <Typography
+                            gutterBottom
+                            variant='h6'
+                            component='div'
+                            sx={{ color: "#000000" }}>
+                            {new Date(match.date).toDateString()}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  ))}
+                </Stack>
+              </>
+            )}
           </Stack>
-          <ScheduleMatch />
         </Stack>
       </Box>
     </Box>
@@ -279,12 +330,12 @@ export default function AdminTools(props) {
 }
 export async function getServerSideProps(ctx) {
   const cookie = ctx.req.headers.cookie;
-  const res = await axios.get("http://localhost:3000/api/admintools", {
+  const res = await axios.get("http://localhost:3000/api/fixture/results", {
     headers: {
       cookie: cookie,
     },
   });
   return {
-    props: res.data,
+    props: { data: res.data },
   };
 }

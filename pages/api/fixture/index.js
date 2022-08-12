@@ -13,10 +13,14 @@ export default async function (req, res) {
       let { tickets, match, date, time } = req.body;
       let m_id = Math.floor(100000 + Math.random() * 900000);
       console.log(req.body, m_id);
-      const addMatch = executeQuery("INSERT INTO fmatch VALUES (?,?,?,?,?)", [
+      let status = "future";
+      if (new Date(date) < Date.now()) status = "past";
+      console.log(status);
+      const addMatch = executeQuery("INSERT INTO fmatch VALUES (?,?,?,?,?,?)", [
         m_id,
         match.opponant,
         match.venue,
+        status,
         dateFix(date),
         timeFix(time),
       ]);
@@ -50,8 +54,11 @@ export default async function (req, res) {
       yourDate = new Date(yourDate.getTime() - offset * 60 * 1000);
       yourDate = yourDate.toISOString().split("T")[0];
       console.log(yourDate);
-      const matches = await executeQuery("select * from fmatch where date>=? ORDER BY date ASC",[yourDate]);
-      res.status(200).json({matches})
+      const matches = await executeQuery(
+        "select * from fmatch where date>=? ORDER BY date ASC",
+        [yourDate]
+      );
+      res.status(200).json({ matches });
     } catch (err) {
       console.log(err);
       res.status(400).json(err);
