@@ -128,7 +128,8 @@ function Navbar() {
                 PaperProps={{
                   elevation: 0,
                   sx: {
-                    backgroundColor: "#FDC52C",
+                    color: "white",
+                    backgroundColor: "#6E2754",
                     overflow: "visible",
                     filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                     mt: 1.5,
@@ -146,7 +147,7 @@ function Navbar() {
                       right: 14,
                       width: 10,
                       height: 10,
-                      bgcolor: "#FDC52C",
+                      bgcolor: "#6E2754",
                       transform: "translateY(-50%) rotate(45deg)",
                       zIndex: 0,
                     },
@@ -159,26 +160,26 @@ function Navbar() {
                 </MenuItem>
                 <MenuItem>
                   <ListItemIcon>
-                    <NotificationsIcon />
+                    <NotificationsIcon sx={{ color: "white" }} />
                   </ListItemIcon>{" "}
                   Notifications
                 </MenuItem>
                 <Divider />
                 <MenuItem>
                   <ListItemIcon>
-                    <PersonAdd fontSize='small' />
+                    <PersonAdd fontSize='small' sx={{ color: "white" }} />
                   </ListItemIcon>
                   Add another account
                 </MenuItem>
                 <MenuItem>
                   <ListItemIcon>
-                    <Settings fontSize='small' />
+                    <Settings fontSize='small' sx={{ color: "white" }} />
                   </ListItemIcon>
                   Settings
                 </MenuItem>
                 <MenuItem onClick={handleLogout}>
                   <ListItemIcon>
-                    <Logout fontSize='small' />
+                    <Logout fontSize='small' sx={{ color: "white" }} />
                   </ListItemIcon>
                   Logout
                 </MenuItem>

@@ -17,6 +17,7 @@ export default async (req, res) => {
     console.log("from database");
     const currentUser = {
       id: user[0].userId,
+      name: user[0].name,
       email: user[0].email,
       role: user[0].role,
       description: user[0].description,
