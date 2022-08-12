@@ -75,7 +75,11 @@ function Navbar() {
               news
             </Link>
           </Button>
-          <Button className={NavbarStyles.navItem}>Team</Button>
+          <Button className={NavbarStyles.navItem}>
+            <Link underline='none' href='/player'>
+              Player
+            </Link>
+          </Button>
           <Button className={NavbarStyles.navItem}>Tickets</Button>
           <Button className={NavbarStyles.navItem}>
             <Link
