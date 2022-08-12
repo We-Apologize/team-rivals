@@ -42,7 +42,7 @@ export default function checkoutCart(props) {
       case 1:
         return <Billing setOrder={setOrder} order={order} />;
       case 2:
-        return <OrderNow order={order} />;
+        return <OrderNow order={order} products={cartItem} total={totalPrice}/>;
       default:
         throw new Error("Unknown step");
     }
@@ -54,13 +54,12 @@ export default function checkoutCart(props) {
     amount: totalPrice,
     deliveryaddress: "random",
     contact: "01980554854",
-    email: "ajhdjsaj@gmail.com",
     billing: "Cash on delivery",
+    email:auth.user
   });
   const headers = {
     "Content-Type": "application/json",
   };
-  const [deliveryAddress, setDeliveryAddress] = useState("");
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {

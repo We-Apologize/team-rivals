@@ -1,5 +1,5 @@
 import { executeQuery } from "../../../lib/db";
-import { confirmTicket } from "../../../utils/confirmMail";
+import { confirmTicket ,confirmOrder} from "../../../utils/confirmMail";
 export default async function (req, res) {
   if (req.method === "GET") {
     try {
@@ -13,6 +13,7 @@ export default async function (req, res) {
   } 
   else if (req.method === "POST") {
     try{
+
         const {match,email,category,totalAmount} = req.body;
         const result = await executeQuery(`update ticket set total=total-? ,sold = sold+? where category=? and m_id=?`,[parseInt(totalAmount),parseInt(totalAmount),category,match.m_id]);
         const mail = await confirmTicket(email,totalAmount,match,category);

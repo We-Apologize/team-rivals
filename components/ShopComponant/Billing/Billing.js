@@ -25,8 +25,7 @@ export default function Billing(props) {
         </h4>
         <div>
           <p style={{ display: "flex", justifyContent: "center" }}>
-            Your email Address : abcd124@gmail.com
-          </p>
+            Your email Address : {order.email}         </p>
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>
             <TextField
               id="filled-multiline-static"

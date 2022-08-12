@@ -50,12 +50,26 @@ function confirmTicket(toUser,totalAmount,match,category) {
     text: "Hello",
     html: `
       <p>Enjoy the Match</p>
-      <b>Team rivals vs ${match.opponant}</b>
-      <b>${match.date} ${match.time}</b>
-      <b>Your Gallery is ${category} and you purchased ${totalAmount} tickets.</b>
+     <p> <b>Team rivals vs ${match.opponant}</b></p>
+     <p> <b>${match.date} ${match.time}</b></p>
+      <p><b>Your Gallery is ${category} and you purchased ${totalAmount} tickets.</b></p>
     `,
   };
 
   return sendEmail(message);
 }
-module.exports = { confirmMail ,confirmTicket};
+function confirmOrder(toUser,total,products) {
+  const message = {
+    from: "TeamRivals <process.env.TEAMRIVALS_EMAIL>",
+    to: toUser,
+    subject: "TeamRivals -  Thank For Shopping with us.",
+    text: "Hello",
+    html: `
+      <p>Your Total Bill : <b>${total}</b></p> 
+      <p>${JSON.stringify(products)}</p>
+    `,
+  };
+
+  return sendEmail(message);
+}
+module.exports = { confirmMail ,confirmTicket,confirmOrder};
