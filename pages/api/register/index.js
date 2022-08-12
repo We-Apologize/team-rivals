@@ -1,7 +1,7 @@
 import { executeQuery } from "../../../lib/db";
 import { registrationHandler } from "../../../utils/registrationHandler";
 import { confirmMail } from "../../../utils/confirmMail";
-import { TrainOutlined } from "@mui/icons-material";
+
 export default async (req, res) => {
   if (req.method === "GET") res.send(200);
   else if (req.method === "POST") {

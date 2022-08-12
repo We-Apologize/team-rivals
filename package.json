@@ -14,6 +14,10 @@
     "@date-io/date-fns": "^2.15.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@mantine/core": "^5.1.1",
+    "@mantine/hooks": "^5.1.1",
+    "@mantine/next": "^5.1.1",
+    "@mantine/rte": "^5.1.1",
     "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.6.2",
     "@mui/material": "^5.6.4",
@@ -25,7 +29,7 @@
     "cookie": "^0.5.0",
     "cookies": "^0.8.0",
     "cors": "^2.8.5",
-    "date-fns": "^2.29.1",
+    "draft-js": "^0.11.7",
     "firebase": "^9.8.3",
     "framer-motion": "^6.3.4",
     "googleapis": "^104.0.0",
@@ -34,9 +38,10 @@
     "mysql": "^2.18.1",
     "next": "12.1.5",
     "nodemailer": "^6.7.5",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "sass": "^1.51.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.51.0",
+    "timeago.js": "4.0.0-beta.3"
   },
   "devDependencies": {
     "eslint": "8.14.0",

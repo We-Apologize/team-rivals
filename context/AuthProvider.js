@@ -29,11 +29,12 @@ export const AuthProvider = ({ children }) => {
           { withCredentials: true }
         );
         const email = result.data.email;
+        const name = result.data.name;
         const id = result.data.id;
-        console.log(result.data)
-        setAuth({ user: email, id: id, isLoggedIn: true });
+        console.log(result.data);
+        setAuth({ user: email, name: name, id: id, isLoggedIn: true });
         if (result.data.role === "admin") setIsAdmin(true);
-        else if(result.data.role === "editor") setIsEditor(true);
+        else if (result.data.role === "editor") setIsEditor(true);
         setLoading(false);
       } catch (e) {
         console.log(e);
@@ -58,8 +59,9 @@ export const AuthProvider = ({ children }) => {
 
       const email = result.data.email;
       const id = result.data.id;
+      const name = result.data.name;
       console.log(result.data);
-      setAuth({ id: id, user: email, isLoggedIn: true });
+      setAuth({ id: id, user: email, name: name, isLoggedIn: true });
       if (result.data.role == "admin") setIsAdmin(true);
       else if (result.data.role === "editor") setIsEditor(true);
       setLoading(false);

@@ -1,0 +1,8 @@
+CREATE TABLE news(
+newsId VARCHAR(255) PRIMARY KEY,
+newsTitle VARCHAR(255) NOT NULL,
+newsDescription LONGTEXT,
+authorId INTEGER NOT NULL,
+authorName VARCHAR(255) NOT NULL,
+publishedAt VARCHAR(255) NOT NULL
+);
