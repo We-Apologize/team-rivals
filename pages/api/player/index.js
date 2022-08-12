@@ -5,9 +5,28 @@ const dateFix = (date) => {
 };
 export default async function (req, res) {
   if (req.method === "GET") {
-    const players = await executeQuery(
-      "SELECT p_id,name, position,image FROM player"
+    const Defender = await executeQuery(
+      "SELECT p_id,name,image FROM player WHERE position = (?)",
+      ["Defender"]
     );
+    const Goalkeeper = await executeQuery(
+      "SELECT p_id,name,image FROM player WHERE position = (?)",
+      ["Goalkeeper"]
+    );
+    const Forward = await executeQuery(
+      "SELECT p_id,name,image FROM player WHERE position = (?)",
+      ["Forward"]
+    );
+    const Midfielder = await executeQuery(
+      "SELECT p_id,name,image FROM player WHERE position = (?)",
+      ["Midfielder"]
+    );
+    const players = {
+      Defender: Defender,
+      Goalkeeper: Goalkeeper,
+      Forward: Forward,
+      Midfielder: Midfielder,
+    };
     return res.send(players);
   }
   if (req.method === "POST") {
