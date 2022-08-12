@@ -9,43 +9,92 @@ import {
   Stack,
 } from "@mui/material";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
+import Navbar from "../../../../components/Navbar/Navbar";
+import styles from "../../../../styles/Home.module.scss"
 export default function addResult() {
   const [events, setEvents] = useState("Select Event");
-  const [goalType, setGoalType] = useState("");
-  const [Scorer, setScorer] = useState("");
-  const [assist, setAssist] = useState("");
-  const [teamGoal, setTeamGoal] = useState("");
+  const [allEvent,setAllEvent] = useState([]);
+  const router = useRouter();
+  const { id } = router.query;
+  const saveMatchDetails =async ()=>{
+    try{
+      const res = await axios.post("/api/fixture/saveMatch",{events:allEvent,m_id:id})
+      alert("Match details Added");
+    }
+    catch(err){
+      console.log(err)
+    }
 
-  const [saveType, setSaveType] = useState("");
-  const [goalkeeper, setGoalKeeper] = useState("");
-  const [teamSave, setTeamSave] = useState("");
-
-  const [playerIn, setPlayerIn] = useState("");
-  const [playerOut, setPlayerOut] = useState("");
-  const [teamPlayer, setTeamPlayer] = useState("");
-
-  const [card, setCard] = useState("");
-  const [sentOf, setSentOf] = useState("");
-  const [CardPlayer, setCardPlayer] = useState("");
-  const [TeamCard, setTeamCard] = useState("");
-
+  }
+  const [goal, setGoal] = useState({
+    type:"",
+    scorer:"",
+    assist:"",
+    teamname:""
+  });
+   
+  const [save, setSave] = useState({
+    type:"",
+    keeper:"",
+    teamname:""
+  })
+ 
+  const [playerInOut,setPlayerInOut] = useState({
+    playerIn:"",
+    playerOut:"",
+    teamname:""
+  });
+  const [book,setBook] = useState({
+    card:"",
+    sentOf:"",
+    player:"",
+    teamname:""
+  });
+  const [time,setTime] = useState(0);
   const event = ["Goal", "PlayerInOut", "PlayerBooked", "Saves"];
-  const handleChange = (event) => {
-    setEvents(event.target.value);
+  const handleChange = (e) => {
+    setEvents(e.target.value);
   };
   const addEvents = () => {
-    console.log(yoo);
+    let ev = {
+      time,
+      events
+    }
+    if(events=="Goal")
+    {
+      ev.eventDetails = goal
+    }
+    else if(events=="PlayerInOut")
+    {
+      ev.eventDetails = playerInOut;
+    }
+    else if(events=="PlayerBooked")
+    {
+      ev.eventDetails = book
+    }
+    else if(events=="Saves")
+    {
+      ev.eventDetails = save
+    }
+    setAllEvent((prev)=>[...prev,ev])
   };
   return (
     <>
-      <div style={{ margin: "auto" }}>
-        <h1>Add results of match</h1>
+    <Navbar/>
+      <div style={{ margin: "auto" }} className={styles.bgOfAdresult}>
+        <h1 style={{display:"flex",justifyContent:"center"}}>Add results of match</h1>
         <form>
           <Stack
             direction='column'
+            justifyContent="center"
+            alignSelf="center"
             spacing={4}
-            sx={{ width: "30%", margin: "100px" }}>
-            <TextField label='Time' />
+            sx={{ width: "30%", margin: "100px"}}>
+               <h3 style={{display:"flex",justifyContent:"center"}}>Add Timestamp of the match event</h3>
+            <TextField label='Time' onChange={(e)=>{setTime(e.target.value)}}/>
+            <h3 style={{display:"flex",justifyContent:"center"}}>Select Event Type</h3>
             <FormControl>
               <InputLabel id='demo-simple-select-label'>
                 Select Event
@@ -71,23 +120,19 @@ export default function addResult() {
                 <Typography>Goals</Typography>
                 <TextField
                   label='Goal Type'
-                  value={goalType}
-                  onChange={(e) => setGoalType(e.target.value)}
+                  onChange={(e) => setGoal({...goal,type:e.target.value})}
                 />
                 <TextField
                   label='Scorer'
-                  value={Scorer}
-                  onChange={(e) => setScorer(e.target.value)}
+                  onChange={(e) => setGoal({...goal,scorer:e.target.value})}
                 />
                 <TextField
                   label='Assisted Player'
-                  value={assist}
-                  onChange={(e) => setAssist(e.target.value)}
+                  onChange={(e) => setGoal({...goal,assist:e.target.value})}
                 />
                 <TextField
                   label='Team name'
-                  value={teamGoal}
-                  onChange={(e) => setTeamGoal(e.target.value)}
+                  onChange={(e) => setGoal({...goal,teamname:e.target.value})}
                 />
               </>
             ) : (
@@ -98,18 +143,15 @@ export default function addResult() {
                 <Typography>Saves</Typography>
                 <TextField
                   label='Saves Type'
-                  value={saveType}
-                  onChange={(e) => setSaveType(e.target.value)}
+                  onChange={(e) => setSave({...save,type:e.target.value})}
                 />
                 <TextField
-                  value={goalkeeper}
                   label='Player'
-                  onChange={(e) => setGoalKeeper(e.target.value)}
+                  onChange={(e) => setSave({...save,keeper:e.target.value})}
                 />
                 <TextField
                   label='Team name'
-                  value={teamSave}
-                  onChange={(e) => setTeamSave(e.target.value)}
+                  onChange={(e) => setSave({...save,teamname:e.target.value})}
                 />
               </>
             ) : (
@@ -120,18 +162,15 @@ export default function addResult() {
                 <Typography>PlayerInOut</Typography>
                 <TextField
                   label='In player'
-                  value={playerIn}
-                  onChange={(e) => setPlayerIn(e.target.value)}
+                  onChange={(e) => setPlayerInOut({...playerInOut,playerIn:e.target.value})}
                 />
                 <TextField
                   label='Out Player'
-                  value={playerOut}
-                  onChange={(e) => setPlayerOut(e.target.value)}
+                  onChange={(e) => setPlayerInOut({...playerInOut,playerOut:e.target.value})}
                 />
                 <TextField
                   label='Team name'
-                  value={teamPlayer}
-                  onChange={(e) => setTeamPlayer(e.target.value)}
+                  onChange={(e) => setPlayerInOut({...playerInOut,teamname:e.target.value})}
                 />
               </>
             ) : (
@@ -142,33 +181,34 @@ export default function addResult() {
                 <Typography>Player Booked</Typography>
                 <TextField
                   label='Card'
-                  value={card}
-                  onChange={(e) => setCard(e.target.value)}
+                  onChange={(e) => setBook({...book,card:e.target.value})}
                 />
                 <TextField
                   label='Sent of'
-                  value={sentOf}
-                  onChange={(e) => setSentOf(e.target.value)}
+                  onChange={(e) => setBook({...book,sentOf:e.target.value})}
                 />
                 <TextField
                   label='Player'
-                  value={CardPlayer}
-                  onChange={(e) => setCardPlayer(e.target.value)}
+                  onChange={(e) => setBook({...book,player:e.target.value})}
                 />
                 <TextField
                   label='Team name'
-                  value={TeamCard}
-                  onChange={(e) => setTeamCard(e.target.value)}
+                  onChange={(e) => setBook({...book,teamname:e.target.value})}
                 />
               </>
             ) : (
               <></>
             )}
 
-            <Button variant='contained' onClick={addEvents}>
+            <Button variant='contained' sx={{bgcolor:"#0A0927"}} onClick={addEvents}>
               Add Events
             </Button>
-            <Button variant='contained' type='submit'>
+            {allEvent.map((ev,i)=>{
+             return <div><p>{i+1}</p>
+              <p>{JSON.stringify(ev)}</p></div>
+               
+            })}
+            <Button variant='contained' sx={{bgcolor:"#0A0927"}} onClick={saveMatchDetails}>
               Save
             </Button>
           </Stack>
