@@ -1,0 +1,43 @@
+.stadium {
+  color: antiquewhite;
+  font-size: small;
+  display: flex;
+  justify-content: center;
+}
+.heroWrapper{
+    margin: 10px;
+    border-radius: 15px;
+    border: 10px;
+    border-color: #fdc52c;
+    background-color: rgba($color: #242222, $alpha: 0.4);
+}
+.date {
+  color: #fdc52c;
+  font-size: 30px;
+  margin-top: -10px;
+  display: flex;
+  justify-content: center;
+}
+.vsDiv {
+  display: flex;
+  justify-content: space-evenly;
+}
+.teamname {
+  color: white;
+  font-size: 50px;
+  font-weight: 600;
+}
+.time {
+  width: 250px;
+  height: 150px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  color: white;
+  font-weight: 800;
+  border-radius: 5%;
+  background-color: #181827;
+}
+
