@@ -9,13 +9,16 @@ import {
   Stack,
 } from "@mui/material";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import axios from "axios";
 export default function addResult() {
   const [events, setEvents] = useState("Select Event");
   const [allEvent,setAllEvent] = useState([]);
+  const router = useRouter();
+  const { id } = router.query;
   const saveMatchDetails =async ()=>{
     try{
-      const res = await axios.post("/api/fixture/saveMatch",{events:allEvent,m_id:"112324"})
+      const res = await axios.post("/api/fixture/saveMatch",{events:allEvent,m_id:id})
       alert("Match details Added");
     }
     catch(err){

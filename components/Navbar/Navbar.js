@@ -92,6 +92,14 @@ function Navbar() {
             <Link
               underline='none'
               className={NavbarStyles.otherItems}
+              href='/result'>
+              Result
+            </Link>
+          </Button>
+          <Button className={NavbarStyles.navItem}>
+            <Link
+              underline='none'
+              className={NavbarStyles.otherItems}
               href='/shop'>
               Shop
             </Link>
