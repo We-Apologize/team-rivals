@@ -16,7 +16,7 @@ import { TypographyStylesProvider } from "@mantine/core";
 import { format, render, cancel, register } from "timeago.js";
 import Link from "next/link";
 import axios from "axios";
-
+import styles2 from "../../styles/Player.module.scss";
 export default function (props) {
   const { auth, loading } = useAuth();
   if (loading) return <LoadingScreen />;
@@ -24,14 +24,7 @@ export default function (props) {
   return (
     <>
       <Navbar />
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          height: "100%",
-          flexDirection: "row",
-          overflow: "hidden",
-        }}>
+      <div className={styles2.itemContainer}>
         {props.data.map((news, i) => (
           //<ObjectRow obj={object} key={i} />
           <Link href={`/news/${news.newsId}`} sx={{ cursor: "pointer" }}>
@@ -45,7 +38,7 @@ export default function (props) {
               <CardMedia
                 component='img'
                 height='140'
-                image='/bg.jpg'
+                image={news.url}
                 alt='green iguana'
               />
               <CardContent>
@@ -72,8 +65,6 @@ export default function (props) {
             </Card>
           </Link>
         ))}
-
-       
       </div>
     </>
   );

@@ -136,6 +136,12 @@ function Navbar() {
                   aria-haspopup='true'
                   aria-expanded={open ? "true" : undefined}>
                   <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                  {auth.name && (
+                    <Typography sx={{ color: "white" }}>
+                      {" "}
+                      {" " + auth.name}
+                    </Typography>
+                  )}
                 </IconButton>
               </Tooltip>
               <Menu

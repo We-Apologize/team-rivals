@@ -4,5 +4,6 @@ newsTitle VARCHAR(255) NOT NULL,
 newsDescription LONGTEXT,
 authorId INTEGER NOT NULL,
 authorName VARCHAR(255) NOT NULL,
+url VARCHAR(255),
 publishedAt VARCHAR(255) NOT NULL
 );
