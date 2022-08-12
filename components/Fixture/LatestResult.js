@@ -17,7 +17,6 @@ export default function LatestResult(props) {
             <p className={styles.teamname}>{matches.opponant}</p>
         </div>
         <div style={{display:"flex",justifyContent:"center"}}>
-        <Button variant="contained" sx={{marginBottom:"10px"}}style={{backgroundColor:"#181733"}} >BUY Ticket</Button>
         </div>
        
 
