@@ -1,5 +1,6 @@
 import styles from "../../styles/Shop.module.scss";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import axios from "axios";
 import Navbar from "../../components/Navbar/Navbar";
 import Slider from "../../components/ShopComponant/Slider/Slider";
@@ -12,15 +13,20 @@ import Badge from "@mui/material/Badge";
 import { Stack } from "@mui/material";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "../../context/AuthProvider";
 export default function Shop(props) {
+  const router = useRouter();
   const [items, setItems] = useState(props.products);
   const [filteredItems, setFilteredItems] = useState([]);
   const [activeCategory, setActiveCategory] = useState("All");
-  const [cartItem,setCartItem] = useState([]);
-  const headers = {
-    "Content-Type": "application/json",
+  const [cartItem, setCartItem] = useState([]);
+  const { auth } = useAuth();
+  const gotoCheckout = () => {
+    if (cartItem.length != 0)
+      localStorage.setItem("cartItem", JSON.stringify(cartItem));
+    if (auth.user) router.push("/shop/checkoutCart");
+    else router.push("/login");
   };
-
   return (
     <>
       <Head>
@@ -34,7 +40,7 @@ export default function Shop(props) {
             props.banners.length !== 0 && (
               <Slider sliderImage={props.banners} timer={5000} />
             )}
-          
+
           <FilterItem
             items={items}
             setFilteredItems={setFilteredItems}
@@ -45,12 +51,21 @@ export default function Shop(props) {
           <motion.div className={styles.itemContainer}>
             <AnimatePresence>
               {filteredItems.map((item) => (
-                <ProductCard key={item.id} item={item} show="cart" addToCart={setCartItem}/>
+                <ProductCard
+                  key={item.id}
+                  item={item}
+                  show="cart"
+                  addToCart={setCartItem}
+                />
               ))}
             </AnimatePresence>
           </motion.div>
         </Stack>
-        <Fab aria-label="cart" className={styles.floatingCart}>
+        <Fab
+          aria-label="cart"
+          className={styles.floatingCart}
+          onClick={gotoCheckout}
+        >
           <Badge badgeContent={cartItem.length} color="secondary">
             <ShoppingCartIcon />
           </Badge>
@@ -85,7 +100,7 @@ export async function getServerSideProps(context) {
     const [banner, product] = await Promise.all([getBanner, getProduct]);
     console.log(banner);
     console.log(product);
-    if (banner.status === 200 && product.status===200) {
+    if (banner.status === 200 && product.status === 200) {
       banners = banner.data;
       products = product.data;
     } else alert("Error Occured");
@@ -93,5 +108,5 @@ export async function getServerSideProps(context) {
     console.log(err);
   }
 
-  return { props: { banners,products } };
+  return { props: { banners, products } };
 }

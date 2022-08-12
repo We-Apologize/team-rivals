@@ -14,6 +14,7 @@ export default function Register() {
     const user = {
       ...enteredEmailAndPassword,
     };
+    console.log(user)
     await axios
       .post("/api/register", user)
       .then(function (res) {
