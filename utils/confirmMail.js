@@ -42,4 +42,20 @@ function confirmMail(toUser) {
 
   return sendEmail(message);
 }
-module.exports = { confirmMail };
+function confirmTicket(toUser,totalAmount,match,category) {
+  const message = {
+    from: "TeamRivals <process.env.TEAMRIVALS_EMAIL>",
+    to: toUser,
+    subject: "TeamRivals -  Thank you for purchasing ticket",
+    text: "Hello",
+    html: `
+      <p>Enjoy the Match</p>
+      <b>Team rivals vs ${match.opponant}</b>
+      <b>${match.date} ${match.time}</b>
+      <b>Your Gallery is ${category} and you purchased ${totalAmount} tickets.</b>
+    `,
+  };
+
+  return sendEmail(message);
+}
+module.exports = { confirmMail ,confirmTicket};

@@ -4,12 +4,32 @@ import styles from "../../styles/Fixture.module.scss"
 import LatestResult from "../../components/Fixture/LatestResult";
 import Button from '@mui/material/Button';
 import axios from "axios";
+import TicketSellModal from "../../components/Fixture/TicketSellModal";
+import { useState } from "react";
 export default function fixture(props) {
   const {matches}=props;
+
   const showDate=(d)=>{
     let date = new Date(d);
     return date.toString().slice(0,15);
   }
+  const getTicketInfo =async(m_id)=>{
+    const res = await axios.get(`/api/fixture/tickets?m_id=${m_id}`);
+    console.log(res);
+    return res;
+}
+  const [open,setOpen]=useState(false);
+  const [match,setMatch] =useState({});
+  const [ticket,setTicket] =useState({});
+  const setModalOpen = async (m)=>{
+    const res = await getTicketInfo(m.m_id);
+    console.log(res);
+    setTicket(res.data.ticket)
+    setMatch(m);
+    setOpen(true)
+
+  }
+  
   return (
     <>
       <Head>
@@ -23,10 +43,7 @@ export default function fixture(props) {
         <LatestResult matches={matches[0]}/>
         {
           matches.map((m,i)=>{
-            if(i==0)
-            return <p> </p>
-            else 
-            return         <div className={styles.whiteCard}>
+            return <div className={styles.whiteCard}>
             <div className={styles.singleFixture}>
               <p>{`${showDate(m.date)} ${m.time}`}</p>
               <p>{m.venue}</p>
@@ -35,15 +52,16 @@ export default function fixture(props) {
               <p>VS</p>
               <p>{m.opponant}</p>
               </div>
-              <Button variant="contained" sx={{ bgcolor:"yellow",color:"black", textTransform:"capitalize", height:"30px", padding:".2rem 2rem"}} >Tickets</Button>
+              <Button variant="contained" sx={{ bgcolor:"yellow",color:"black", textTransform:"capitalize", height:"30px", padding:".2rem 2rem"}} onClick={(e)=>{console.log(m);setModalOpen(m)}} >Tickets</Button>
+            
             </div>
           </div>
           })
         }
-
-  
+          {open && <TicketSellModal open={open} setOpen={setOpen} match={match} ticket={ticket}/>}
         </div>
       </div>}
+      
       </div>
     </>
   );
