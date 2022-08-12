@@ -10,6 +10,7 @@ import News from "@mui/icons-material/ArticleRounded";
 import Reports from "@mui/icons-material/FlagRounded";
 import Comments from "@mui/icons-material/ChatBubbleRounded";
 import Back from "@mui/icons-material/ArrowBackRounded";
+import ViewListIcon from '@mui/icons-material/ViewList';
 import Link from "next/link";
 const Icon = {
   Inbox: <Inbox />,
@@ -19,6 +20,7 @@ const Icon = {
   News: <News />,
   Reports: <Reports />,
   Comments: <Comments />,
+  "Fixtures" : <ViewListIcon />,
   "Go Back": <Back />,
 };
 function link(component) {

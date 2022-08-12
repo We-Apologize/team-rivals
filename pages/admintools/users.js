@@ -250,6 +250,7 @@ export default function AdminTools(props) {
             "News",
             "Reports",
             "Comments",
+            "Fixture",
             "Go Back",
           ].map((text) => (
             <SidebarItems key={text} name={text} />

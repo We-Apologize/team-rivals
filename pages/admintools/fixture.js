@@ -24,6 +24,8 @@ import Link from "next/link";
 import Card from "@mui/material/Card";
 import SidebarItems from "../../components/AdminPanelComponents/SidebarItems/SidebarItems";
 import axios from "axios";
+import Button from '@mui/material/Button'
+import ScheduleMatch from "../../components/Fixture/ScheduleMatch";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -269,87 +271,11 @@ export default function AdminTools(props) {
       >
         <Stack spacing={4}>
           <Stack direction="row" spacing={4}>
-            <Card
-              variant="outlined"
-              sx={{
-                width: "330px",
-                minWidth: "200px",
-                backgroundColor: "#5E35B1",
-                padding: "12px",
-                height: "170px",
-                borderRadius: "8px",
-              }}
-            >
-              <Typography
-                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}
-              >
-                Total Users
-              </Typography>
-              <Typography
-                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}
-              >
-                {props.user}
-              </Typography>
-            </Card>
-            <Card
-              variant="outlined"
-              sx={{
-                width: "330px",
-                minWidth: "200px",
-                backgroundColor: "#D94C15",
-                padding: "12px",
-                height: "170px",
-                borderRadius: "8px",
-              }}
-            >
-              <Typography
-                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}
-              >
-                Total pending users
-              </Typography>
-              <Typography
-                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}
-              >
-                {props.pendingUser}
-              </Typography>
-            </Card>
+            <Button variant="contained">Schedule A Match</Button>
+            <Button variant="contained">Scheduled Matches</Button>
+            <Button variant="contained">Results</Button>
           </Stack>
-          <Stack direction="row" spacing={4}>
-            <Card
-              variant="outlined"
-              sx={{
-                width: "330px",
-                minWidth: "200px",
-                backgroundColor: "#1E88E5",
-                padding: "12px",
-                height: "170px",
-                borderRadius: "8px",
-              }}
-            >
-              <Typography
-                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}
-              >
-                Reports
-              </Typography>
-            </Card>
-            <Card
-              variant="outlined"
-              sx={{
-                width: "330px",
-                minWidth: "200px",
-                backgroundColor: "#2E86E0",
-                padding: "12px",
-                height: "170px",
-                borderRadius: "8px",
-              }}
-            >
-              <Typography
-                sx={{ color: "white", fontFamily: "Roboto", fontSize: "24px" }}
-              >
-                Orders
-              </Typography>
-            </Card>
-          </Stack>
+          <ScheduleMatch />
         </Stack>
       </Box>
     </Box>
