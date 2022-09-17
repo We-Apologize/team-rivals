@@ -21,6 +21,20 @@ export default function Home(props) {
   return (
     <div className={styles.container}>
       <Navbar />
+      <div className={styles.landing}>
+      <div>
+      <h1 className={styles.landingTittle}>Team Rivals</h1>
+        <p className={styles.landingDes}>Welcome to Team Rivals Website.<br></br>
+        &#9917; Get All the latest news<br></br>
+        &#9917; Get information of upcoming fixture<br></br>
+        &#9917; Enjoy the match result<br></br>
+        &#9917; Buy Match ticket  <br></br>
+        &#9917; Find your favourite player profiles <br></br>
+        &#9917; Buy Jersey and Mercendise of Team Rivals</p>
+      </div>
+          <img  style={{height:"500px",marginRight:"3rem",marginLeft:"9rem"}}src="/landingGif.svg" alt="logo"/>
+
+      </div>
       <Carousel
         slideGap='xs'
         controlsOffset='xs'
